@@ -76,7 +76,7 @@ const HomeStackScreen = ({navigation}) => (
         title: 'Overview',
         headerLeft: () => (
           <Icon.Button
-            name="ios-aperture"
+            name="ios-menu"
             size={30}
             backgroundColor="#009387"
             onPress={() => navigation.openDrawer()}

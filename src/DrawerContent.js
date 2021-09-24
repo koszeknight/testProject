@@ -10,11 +10,19 @@ import {
   Text,
   TouchableRipple,
   Switch,
+  ToggleButton,
 } from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/AntDesign';
+//import {Icon2} from 'react-native-elements';
+import {StarOutlined, StarFilled, StarTwoTone} from '@ant-design/icons';
 
 export function DrawerContent(props) {
+  const [isDarkTheme, setDarkTheme] = React.useState(false);
+
+  const toggleTheme = () => {
+    setDarkTheme(isDarkTheme);
+  };
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView {...props}>
@@ -58,12 +66,39 @@ export function DrawerContent(props) {
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="home" color={color} size={size} />
+                <Icon name="account-outline" color={color} size={size} />
               )}
-              label="Home"
+              label="Profile"
+              onPress={() => {}}
+            />
+            <DrawerItem
+              icon={({color, size}) => (
+                <Icon name="Bookmark-outline" color={color} size={size} />
+              )}
+              label="Bookmark"
+              onPress={() => {}}
+            />
+            <DrawerItem
+              icon={({color, size}) => (
+                <Icon name="Settings-outline" color={color} size={size} />
+              )}
+              label="Settings"
               onPress={() => {}}
             />
           </Drawer.Section>
+          <Drawer.section title="Preferences">
+            <TouchableRipple
+              onPress={() => {
+                toggleTheme();
+              }}>
+              <View style={styles.preference}>
+                <Text>Dark Them</Text>
+                <View pointerEvents="none">
+                  <Switch value={isDarkTheme} />
+                </View>
+              </View>
+            </TouchableRipple>
+          </Drawer.section>
         </View>
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>
