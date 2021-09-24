@@ -2,6 +2,7 @@ import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {
+  useTheme,
   Avatar,
   Title,
   Caption,
@@ -18,7 +19,9 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import {StarOutlined, StarFilled, StarTwoTone} from '@ant-design/icons';
 
 export function DrawerContent(props) {
+  const paperTheme = useTheme();
   const [isDarkTheme, setDarkTheme] = React.useState(false);
+  //const {signOut, toggleTheme} = React.useContext(AuthContext);
 
   const toggleTheme = () => {
     setDarkTheme(isDarkTheme);
@@ -62,31 +65,39 @@ export function DrawerContent(props) {
                 <Icon name="home" color={color} size={size} />
               )}
               label="Home"
-              onPress={() => {}}
+              onPress={() => {
+                props.navigation.navigate('Home');
+              }}
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="account-outline" color={color} size={size} />
+                <Icon name="user" color={color} size={size} />
               )}
               label="Profile"
-              onPress={() => {}}
+              onPress={() => {
+                props.navigation.navigate('Profile');
+              }}
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="Bookmark-outline" color={color} size={size} />
+                <Icon name="laptop" color={color} size={size} />
               )}
               label="Bookmark"
-              onPress={() => {}}
+              onPress={() => {
+                props.navigation.navigate('Bookmark');
+              }}
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="Settings-outline" color={color} size={size} />
+                <Icon name="setting" color={color} size={size} />
               )}
               label="Settings"
-              onPress={() => {}}
+              onPress={() => {
+                props.navigation.navigate('SettingsScreen');
+              }}
             />
           </Drawer.Section>
-          <Drawer.section title="Preferences">
+          <Drawer.Section title="Preferences">
             <TouchableRipple
               onPress={() => {
                 toggleTheme();
@@ -94,11 +105,11 @@ export function DrawerContent(props) {
               <View style={styles.preference}>
                 <Text>Dark Them</Text>
                 <View pointerEvents="none">
-                  <Switch value={isDarkTheme} />
+                  <Switch value={paperTheme.dark} />
                 </View>
               </View>
             </TouchableRipple>
-          </Drawer.section>
+          </Drawer.Section>
         </View>
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>

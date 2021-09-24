@@ -33,33 +33,34 @@ const Home = ({navigation}) => {
 };
 // };
 
-// const HomeStack = createStackNavigator();
-// const DetailsStack = createStackNavigator();
+const HomeStack = createStackNavigator();
+const DetailsStack = createStackNavigator();
 
-// const Drawer = createDrawerNavigator();
-// const App = () => {
-//   return (
-//     <NavigationContainer>
-//       <Drawer.Navigator initialRouteName="Home">
-//         <Drawer.Screen name="Home" component={Home} />
-//         <Drawer.Screen name="Details" component={DetailsScreen} />
-//       </Drawer.Navigator>
+const Drawer = createDrawerNavigator();
 
-//       {/* <Stack.Navigator
-//         screenOptions={{
-//           headerStyle: {
-//             backgroundColor: '#009387',
-//           },
-//           headerTintColor: '#fff',
-//           headerTinStyle: {
-//             fontWeight: 'bold',
-//           },
-//         }}>
-//         <Stack.Screen name="Home" component={Home} />
-//         <Stack.Screen name="Details" component={DetailsScren} />
-//       </Stack.Navigator> */}
-//     </NavigationContainer>
-//   );
-// };
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={Home} />
+        {/* <Drawer.Screen name="Details" component={DetailsScreen} /> */}
+      </Drawer.Navigator>
+
+      {/* <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#009387',
+          },
+          headerTintColor: '#fff',
+          headerTinStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Details" component={DetailsScren} />
+      </Stack.Navigator> */}
+    </NavigationContainer>
+  );
+};
 
 export default Home;
