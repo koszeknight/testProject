@@ -28,6 +28,7 @@ import SettingsScreen from './src/Settings';
 import DeatailsScreen from './src/Details';
 import {DrawerContent} from './src/DrawerContent';
 
+import RootStackScreen from './src/RootStackScreen';
 // const Home = ({navigation}) => {
 //   return (
 //     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -111,6 +112,7 @@ const Drawer = createDrawerNavigator();
 const App = () => {
   return (
     <NavigationContainer>
+      {/* <RootStackScreen /> */}
       {/* <Drawer.Navigator initialRouteName="Home"> */}
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
@@ -118,8 +120,6 @@ const App = () => {
         <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
         <Drawer.Screen name="Details" component={DeatailsScreen} />
       </Drawer.Navigator>
-
-      {/*  */}
     </NavigationContainer>
   );
 };
