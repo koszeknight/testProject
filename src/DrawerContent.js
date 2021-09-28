@@ -18,10 +18,14 @@ import Icon from 'react-native-vector-icons/AntDesign';
 //import {Icon2} from 'react-native-elements';
 import {StarOutlined, StarFilled, StarTwoTone} from '@ant-design/icons';
 
+import {AuthContext} from './Components/context';
+
 export function DrawerContent(props) {
   const paperTheme = useTheme();
   const [isDarkTheme, setDarkTheme] = React.useState(false);
   //const {signOut, toggleTheme} = React.useContext(AuthContext);
+
+  const {signOut} = React.useContext(AuthContext);
 
   const toggleTheme = () => {
     setDarkTheme(isDarkTheme);
@@ -118,7 +122,9 @@ export function DrawerContent(props) {
             <Icon name="logout" color={color} size={size} />
           )}
           label="Sing Out"
-          onPress={() => {}}
+          onPress={() => {
+            signOut();
+          }}
         />
       </Drawer.Section>
     </View>

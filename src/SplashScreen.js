@@ -1,20 +1,39 @@
 import React from 'react';
 import {Text, Button, Dimensions, StyleSheet, View, Image} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const SplashScreen = () => {
+import LinearGradient from 'react-native-linear-gradient';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import * as Animatable from 'react-native-animatable';
+
+import {AuthContext} from './Components/context';
+
+const SplashScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image
+        <Animatable.Image
+          animation="bounceIn"
+          duraton="1500"
           source={require('../src/assets/login.png')}
           style={styles.logo}
           resizeMode="stretch"
         />
       </View>
-      <View style={styles.footer}>
-        <Text>Footer</Text>
-        <Text>Save Animals</Text>
-      </View>
+      <Animatable.View style={styles.footer} animation="fadeInUpBig">
+        <Text style={styles.title}>Save Animals</Text>
+        <Text style={styles.text}>Save Animals</Text>
+        <View style={styles.button}>
+          <TouchableOpacity onPress={() => navigation.navigate('SingInScreen')}>
+            <LinearGradient
+              colors={['#08d4c4', '#01ab9d']}
+              style={styles.singIn}>
+              <Text style={styles.textSing}>Get Start</Text>
+              <MaterialIcons name="navigate-next" color="#ffff" size={20} />
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
+      </Animatable.View>
     </View>
   );
 };
